@@ -86,8 +86,8 @@ def dashboard(request):
         p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
 
         if u_form.is_valid() and p_form.is_valid():
-            u_form.save()
-            p_form.save()
+            u_form.save(*args, **kwargs)
+            p_form.save(*args, **kwargs)
             messages.success(request, f'Your account has been updated.')
             return redirect('core:dashboard')
 
@@ -107,7 +107,7 @@ def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
-            form.save()
+            form.save(*args, **kwargs)
             username = form.cleaned_data.get('username')
             messages.success(request, f'Account created for {username}!')
             return redirect('core:index')
