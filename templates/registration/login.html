@@ -1,0 +1,21 @@
+{% extends 'core/base.html' %}
+{% load crispy_forms_filters %}
+{% block content %}
+<div class="container pt-5">
+{% if form.erorrs %}
+    <p> Your username or password was incorrect</p>
+{% else %}
+    <p>Please log in</p>
+{% endif %}
+    <div class="login-form">
+        <form action="{% url 'core:login' %}" method="post">
+            {{ form|crispy }}{% csrf_token %}
+            <input type="hidden" name="text" value="{{ next }}" />
+            <input type="submit" value="Log-in">
+                        <small class="text-muted ml-2">
+                <a href="{% url 'password_reset' %}">Forgot Password?</a>
+            </small>
+        </form>
+    </div>
+</div>
+{% endblock %}

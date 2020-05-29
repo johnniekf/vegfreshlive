@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+<div class="container pt-5">
+        <form action="{% url 'search_results' %}" method="get">
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Enter your box code:</legend>
+                <input name="q" type="text" placeholder="Search">
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Sign up</button>
+            </div>
+        </form>
+</div>
+{% endblock %}

@@ -1,0 +1,17 @@
+.navbar-brand{
+    margin-left: 1rem;
+    color: white !important;
+}
+
+a {
+  color:inherit !important;
+  text-decoration: none !important;
+}
+
+User-Banner{
+    text-decoration-color: #dee2e6;
+}
+
+a.User-Banner{
+    color: white;
+}

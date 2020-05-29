@@ -1,0 +1,4 @@
+{% for foodgroup in category %}
+{{ foodgroup.group_name }}
+{% for recipe in foodgroup.recipe.all %}{{ recipe.title }}<br/>{{ recipe.thumb.url }}{% endfor %}
+{% endfor %}

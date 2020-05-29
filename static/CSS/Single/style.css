@@ -1,0 +1,22 @@
+.card-img-top {
+    max-height: 300px;
+    min-height: 100px;
+    object-fit: cover;
+}
+
+.card-title {
+    font-family: 'Balsamiq Sans', cursive;
+    font-size: 36px;
+}
+
+.border-right {
+    border-right: 1px solid #dee2e6!important;
+}
+
+@media (max-width: 575px) {
+
+    .border-right {
+    border-right: none;
+  }
+
+}

@@ -1,0 +1,31 @@
+{% extends 'core/base.html' %}
+{% block content %}
+{% for RecipeSet in recipe_set %}
+<div class="album py-5">
+    <div class="container">
+    <h1>{{ RecipeSet.set_name }}</h1><br>
+    <div class="row">
+            {% for recipe in RecipeSet.recipe.all %}
+        <div class ="col-md-4">
+            <div class="card">
+                {% load static %}
+                <link rel="stylesheet" type="text/css" href="{% static 'CSS/Recipes/style.css' %}">
+                <img class="card-img-top" src="{{ recipe.thumb.url }}" alt="Recipe card">
+                <h4 class="card-title"><a href="{{ recipe.get_absolute_url }}">{{ recipe.title }}</a></h4>
+                <p>{{ recipe.excerpt }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                <div class="">
+                    <small class="text-muted">
+                        <i class="far fa-clock"></i> Prep time: {{ recipe.prepTime }}<br>
+                        <i class="far fa-clock"></i> Cooking time: {{ recipe.cookTime }}<br>
+                        {{ recipe.category }}</small>
+                </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        {% endfor %}
+    </div>
+    </div>
+</div>
+{% endblock %}

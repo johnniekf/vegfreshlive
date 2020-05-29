@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Load the Style for Navbar -->
+    <!-- Because Navbar is used on all pages be careful for overlap -->
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'CSS/Navbar/style.css' %}">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+   <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+    <div class="container">
+  <a class="navbar-brand mb-0 h4" href="/">VegFresh</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+        {% if user.is_authenticated %}
+
+        <li class="nav-link">
+            <a class="nav-link" href="{% url 'core:recipe_set' %}">Box Code</a>
+        </li>
+      <li class="nav-link">
+            <a class="nav-link" href="{% url 'core:recipes' %}">All Recipes</a>
+      </li>
+      <li class="nav-link">
+            <a class="nav-link" href="{% url 'core:categories' %}">Categories</a>
+      </li>
+        {% endif %}
+    </ul>
+                    {% if user.is_authenticated %}
+                        <div class="User-Banner">Welcome back, <a href="{% url 'core:dashboard' %}">{{request.user.username}}</a></div>
+        {% endif %}
+      <li class="nav-link">
+      <button type="button" class="btn btn-outline-info btn-sm">
+          <a class="nav-link"
+            {% if user.is_authenticated %}
+                <a href="{% url 'core:logout' %}">LOG OUT</a>
+            {% else %}
+                <a href="{% url 'core:login' %}">LOG IN</a>
+            {% endif %}
+      </button>
+      </li>
+  </div>
+</nav>
+    </div>
+  <body>

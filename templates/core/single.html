@@ -1,0 +1,37 @@
+{% extends 'core/base.html' %}
+{% block content %}
+
+<!-- Load in static file for Single -->
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'CSS/Single/style.css' %}">
+
+    <div class="container pt-5">
+<div class="card mb-3">
+            <img class="card-img-top" src="{{ post.thumb.url }}" alt="Card image">
+  <div class="card-body">
+  <div class="row">
+        <div class="col-sm border-right">
+        <h5 class="card-title">{{ post.title }}</h5>
+        <small><i class="far fa-clock"></i> Prep time: {{ post.prepTime }}</small><br>
+        <small><i class="far fa-clock"></i> Cooking time: {{ post.cookTime }}</small><br>
+        <div class="card-header">
+        Ingredients
+        </div>
+      <ul class="list-group list-group-flush">
+          {% for ingredients in post.ingredients.all %}
+            <li class="list-group-item">{{ ingredients }}</li>
+          {% endfor %}
+        </ul>
+        </div>
+  <div class="col-sm">
+      <h5 class="card-title">Steps:</h5>
+      <p class="card-text">{{ post.process|linebreaks }}</p>
+      </div>
+  </div>
+  <div class="card-footer">
+      <p class="card-text"><small class="text-muted">Recipe published: {{ post.published }}</small></p>
+  </div>
+</div>
+</div>
+    </div>
+{% endblock %}
