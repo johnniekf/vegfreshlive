@@ -1,1 +1,1 @@
-web:gunicorn vegfresh.wsgi
+web: gunicorn vegfresh.wsgi
