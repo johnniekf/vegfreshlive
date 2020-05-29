@@ -80,7 +80,7 @@ class SearchResultView(ListView):
 
 
 @login_required
-def dashboard(request):
+def dashboard(request, *args, **kwargs):
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
@@ -103,7 +103,7 @@ def dashboard(request):
     return render(request, 'account/dashboard.html', context)
 
 
-def register(request):
+def register(request, *args, **kwargs):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
         if form.is_valid():
